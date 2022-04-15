@@ -10,39 +10,30 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public class PersonDAO {
+public interface PersonDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertPerson(PersonEntity personEntity) {
-
-    }
+    void insertPerson(PersonEntity personEntity) ;
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<PersonEntity> persons) {
-
-    }
+    void insertAll(List<PersonEntity> persons);
 
     @Delete
-    void deletePersonne(PersonEntity personEntity) {
-
-    }
+    void deletePerson(PersonEntity personEntity) ;
 
 
     @Query("SELECT * FROM persons WHERE id=:id")
     PersonEntity getPersonById(int id);
 
+
     @Query("SELECT * FROM persons ORDER BY date DESC")
-    LiveData<List<PersonEntity>> getAll() {
-        return null;
-    }
+    LiveData<List<PersonEntity>> getAll();
+
 
     @Query("DELETE FROM persons")
-    int deleteAll() {
-        return 0;
-    }
+    int deleteAll();
+
 
     @Query("SELECT COUNT (*) FROM persons")
-    int getCount() {
-        return 0;
-    }
+    int getCount();
 }
