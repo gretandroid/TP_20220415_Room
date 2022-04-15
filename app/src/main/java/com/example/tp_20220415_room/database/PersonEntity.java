@@ -1,14 +1,22 @@
 package com.example.tp_20220415_room.database;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 import java.util.Objects;
 
+
+@Entity(tableName = "persons")
 public class PersonEntity {
+
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private Date date;
     private String nom;
 
-
+    @Ignore
     public PersonEntity() {
     }
 
@@ -18,7 +26,7 @@ public class PersonEntity {
         this.nom = nom;
     }
 
-
+    @Ignore
     public PersonEntity(Date date, String nom) {
         this.date = date;
         this.nom = nom;
